@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ToggleSwitchProps {
   isOn: boolean;
   onToggle: () => void;
@@ -39,7 +37,7 @@ const SUN = (
   </svg>
 );
 
-const ToggleButton: React.FC<ToggleSwitchProps> = ({ isOn, onToggle }) => {
+const ToggleButton = ({ isOn, onToggle }: ToggleSwitchProps) => {
   return (
     <div
       onClick={onToggle}
