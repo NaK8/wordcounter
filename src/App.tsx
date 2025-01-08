@@ -50,33 +50,37 @@ function App() {
   ];
 
   return (
-    <div className="container min-h-screen py-2 dark:bg-slate-900 dark:text-white">
-      <div className="mx-auto border border-black p-3 md:w-3/4 md:p-4 dark:border-white">
-        <div className="flex flex-col items-center justify-between pb-3 md:flex-row">
-          <h1 className="py-4 text-2xl font-extrabold uppercase md:text-4xl">
-            word counter
-          </h1>{" "}
-          <ToggleButton isOn={theme === "dark"} onToggle={handleTheme} />
+    <>
+      <main className="min-h-screen py-2 dark:bg-slate-900 dark:text-white">
+        <div className="container mx-auto">
+          <div className="mx-auto border border-black p-3 dark:border-white md:w-3/4 md:p-4">
+            <div className="flex flex-col items-center justify-between pb-3 md:flex-row">
+              <h1 className="py-4 text-2xl font-extrabold uppercase md:text-4xl">
+                word counter
+              </h1>{" "}
+              <ToggleButton isOn={theme === "dark"} onToggle={handleTheme} />
+            </div>
+            <ShowCounts
+              characters={countCharacters}
+              words={countWords}
+              paragraphs={countParagraphs}
+            />
+            <form>
+              <textarea
+                className="w-full border-x border-b border-black p-2 text-white focus:outline-none dark:border-white dark:bg-slate-800"
+                rows={10}
+                onChange={(e) => handleChange(e)}
+                value={text}
+                spellCheck={true}
+                placeholder="Type Here"
+              ></textarea>
+            </form>
+            <InfoCount countLenghts={Socials} charLenght={countCharacters} />
+            <InfoCount countLenghts={MetaTags} charLenght={countCharacters} />
+          </div>
         </div>
-        <ShowCounts
-          characters={countCharacters}
-          words={countWords}
-          paragraphs={countParagraphs}
-        />
-        <form>
-          <textarea
-            className="w-full border-x border-b border-black p-2 text-white focus:outline-none dark:border-white dark:bg-slate-800"
-            rows={10}
-            onChange={(e) => handleChange(e)}
-            value={text}
-            spellCheck={true}
-            placeholder="Type Here"
-          ></textarea>
-        </form>
-        <InfoCount countLenghts={Socials} charLenght={countCharacters} />
-        <InfoCount countLenghts={MetaTags} charLenght={countCharacters} />
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
 
